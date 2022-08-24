@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
-path = "C:\\Users\\tasee\\Desktop\\chromedriver.exe"
+path = "YOUR PATH FOR chromedriver.exe"
 instaURL="https://www.instagram.com/"
 username = "YOUR USERNAME"
 password = "YOUR PASSWORD"
