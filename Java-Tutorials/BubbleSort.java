@@ -33,6 +33,6 @@ class BubbleSort {
         for(int i = 0; i<len; ++i){
             System.out.print(array[i] + " ");
         }
-
     }
+    
 }
