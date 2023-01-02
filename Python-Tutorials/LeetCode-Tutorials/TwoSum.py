@@ -1,3 +1,7 @@
+
+#LeetCode #1 Tutorial - Two Sum
+#Author: Taseen Waseq
+
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         pairs={}
