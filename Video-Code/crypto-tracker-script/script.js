@@ -129,17 +129,20 @@ function setupSheet(coinSymbol) {
     [`Current Price (${currency}):`],
     ['Total Holdings:'],
     [`Portfolio Value (${currency}):`],
+    [`Total Invested (${currency}):`],
+    [`P&L (${currency}):`],
+    ['P&L (%):'],
     [''],
     ['Last Updated:']
   ];
   
-  sheet.getRange('J1:J6').setValues(summaryLabels);
+  sheet.getRange('J1:J9').setValues(summaryLabels);
   sheet.getRange('J1:K1')
     .setFontWeight('bold')
     .setFontSize(12)
     .setBackground('#cfe2f3');
   
-  sheet.getRange('J2:J6').setFontWeight('bold');
+  sheet.getRange('J2:J9').setFontWeight('bold');
   sheet.autoResizeColumns(1, 11);
   sheet.setFrozenRows(1);
 }
@@ -236,7 +239,19 @@ function updateSummary(coinSymbol) {
   }
   
   sheet.getRange('K4').setFormula('=K2*K3').setNumberFormat('$0.00');
-  sheet.getRange('K6').setValue(new Date()).setNumberFormat('yyyy-mm-dd hh:mm');
+  
+  // Calculate Total Invested (sum of BUY transactions minus SELL transactions)
+  if (lastRow > 1) {
+    sheet.getRange('K5').setFormula(`=SUMIF(B2:B${lastRow},"BUY",E2:E${lastRow})-SUMIF(B2:B${lastRow},"SELL",E2:E${lastRow})`).setNumberFormat('$0.00');
+  }
+  
+  // Calculate P&L in dollars (Portfolio Value - Total Invested)
+  sheet.getRange('K6').setFormula('=K4-K5').setNumberFormat('$0.00');
+  
+  // Calculate P&L percentage ((Portfolio Value - Total Invested) / Total Invested * 100)
+  sheet.getRange('K7').setFormula('=IF(K5>0,(K4-K5)/K5*100,0)').setNumberFormat('0.00"%"');
+  
+  sheet.getRange('K9').setValue(new Date()).setNumberFormat('yyyy-mm-dd hh:mm');
 }
 
 /**
