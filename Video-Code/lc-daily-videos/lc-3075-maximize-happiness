@@ -1,0 +1,15 @@
+class Solution(object):
+    def maximumHappinessSum(self, happiness, k):
+        happiness.sort(reverse=True)
+
+        total = 0
+
+        for i in range(k):
+            current_happiness = happiness[i] - i
+            
+            total += max(0, current_happiness)
+
+#           if current_happiness > 0:
+#              total += current_happiness
+            
+        return total
