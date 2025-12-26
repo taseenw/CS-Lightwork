@@ -1,0 +1,21 @@
+class Solution(object):
+    def bestClosingTime(self, customers):
+        suffix_y = customers.count('Y')
+        prefix_n = 0
+        
+        min_penalty = suffix_y
+        best_hour = 0
+        
+        for i, c in enumerate(customers):
+            if c == 'Y':
+                suffix_y -= 1
+            else:
+                prefix_n += 1
+            
+            current_penalty = prefix_n + suffix_y
+            
+            if current_penalty < min_penalty:
+                min_penalty = current_penalty
+                best_hour = i + 1
+        
+        return best_hour
