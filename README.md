@@ -1,4 +1,4 @@
-# CS-Lightwork
+# CS Lightwork
 
 Sample code from my YouTube channel, TikTok, and Instagram where I talk computer science concepts, tools, and ideas.
 
