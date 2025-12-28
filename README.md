@@ -1,6 +1,6 @@
 # CS-Lightwork
 
-Sample code from my YouTube channel where I teach computer science concepts.
+Sample code from my YouTube channel, TikTok, and Instagram where I talk computer science concepts, tools, and ideas.
 
 ## Watch the content
 
